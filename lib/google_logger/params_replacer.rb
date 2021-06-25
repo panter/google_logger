@@ -1,0 +1,33 @@
+# frozen_string_literal: true
+
+module GoogleLogger
+  class ParamsReplacer
+    def deep_replace_secret_params(arg)
+      if arg.is_a?(Hash)
+        deep_replace_params_in_hash(arg)
+      elsif arg.is_a?(Array)
+        deep_replace_params_in_array(arg)
+      end
+    end
+
+    def deep_replace_params_in_hash(hash)
+      hash.each do |key, value|
+        if GoogleLogger.configuration.secret_params.include?(:"#{key}")
+          hash[key] = GoogleLogger.configuration.secret_param_value
+        else
+          deep_replace_secret_params(value)
+        end
+      end
+    end
+
+    def deep_replace_params_in_array(array)
+      array.each { |item| deep_replace_secret_params(item) }
+    end
+
+    class << self
+      def deep_replace_secret_params(arg)
+        new.deep_replace_secret_params(arg)
+      end
+    end
+  end
+end
