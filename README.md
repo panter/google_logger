@@ -118,7 +118,10 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/panter
 
 Special thanks goes to [Panter](https://www.panter.ch/home) and [Yova](https://inyova.ch) for sponsoring development of this gem.
 
-![](https://github.com/panter/google_logger/blob/master/logos/panter_logo.jpg)
+<p align="center">
+    <img src="https://github.com/panter/google_logger/blob/master/logos/panter_logo.jpg" width="200px"/>
+<p align="center">
 
-![](https://github.com/panter/google_logger/blob/master/logos/yova_logo.svg)
-
+<p align="center">
+    <img src="https://github.com/panter/google_logger/blob/master/logos/yova_logo.svg" width="200px"/>
+<p align="center">
