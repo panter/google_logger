@@ -2,17 +2,17 @@
 
 module GoogleLogger
   class Configuration
-    attr_accessor *%i[
-      async
-      resource_type
-      resource_labels
-      secret_params
-      secret_param_value
-      project_id
-      credentials
-      log_locally
-      local_logger
-    ]
+    attr_accessor(*%i[
+                    async
+                    resource_type
+                    resource_labels
+                    secret_params
+                    secret_param_value
+                    project_id
+                    credentials
+                    log_locally
+                    local_logger
+                  ])
 
     # Creates a new instance with default configuration values
     def initialize

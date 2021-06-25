@@ -22,8 +22,8 @@ RSpec.describe GoogleLogger do
 
   let(:config_keys_with_default_value) { %i[async resource_type resource_labels secret_params secret_param_value] }
 
-  before :each do
-    GoogleLogger.configuration = nil
+  before do
+    described_class.configuration = nil
   end
 
   it 'has a version number' do
@@ -54,40 +54,40 @@ RSpec.describe GoogleLogger do
     end
 
     it 'raises configuration error if credentials are missing' do
-      expect {
+      expect do
         described_class.configure
-      }.to raise_error(GoogleLogger::InvalidConfigurationError)
+      end.to raise_error(GoogleLogger::InvalidConfigurationError)
     end
 
     it 'does not raise configuration error if credentials are missing but log_locally is true' do
-      expect {
+      expect do
         described_class.configure do |config|
           config.log_locally = true
-          config.local_logger = Logger.new(STDOUT)
+          config.local_logger = Logger.new($stdout)
         end
-      }.not_to raise_error
+      end.not_to raise_error
     end
 
     it 'raises configuration error if log_locally is true and local_logger is missing' do
-      expect {
+      expect do
         described_class.configure do |config|
           config.log_locally = true
         end
-      }.to raise_error(GoogleLogger::InvalidConfigurationError)
+      end.to raise_error(GoogleLogger::InvalidConfigurationError)
     end
 
     it 'raises configuration error if local_logger does not respond to logging levels' do
-      expect {
+      expect do
         described_class.configure do |config|
           config.log_locally = true
           config.local_logger = Object.new
         end
-      }.to raise_error(GoogleLogger::InvalidConfigurationError)
+      end.to raise_error(GoogleLogger::InvalidConfigurationError)
     end
   end
 
   context 'when creating entries' do
-    before :each do
+    before do
       configure_google_logger
     end
 
@@ -106,9 +106,9 @@ RSpec.describe GoogleLogger do
 
     it 'logs a request and params' do
       request = double('request')
-      allow(request).to receive(:ip) { '0.1.2.3' }
-      allow(request).to receive(:original_url) { 'http://abc.def:1234/something' }
-      allow(request).to receive(:method) { 'POST' }
+      allow(request).to receive(:ip).and_return('0.1.2.3')
+      allow(request).to receive(:original_url).and_return('http://abc.def:1234/something')
+      allow(request).to receive(:method).and_return('POST')
 
       params = ActionController::Parameters.new({ a: 1, b: 2 })
       result = described_class.log_request(request, params)

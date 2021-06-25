@@ -27,22 +27,21 @@ RSpec.describe GoogleLogger::ControllerLogging do
   end
 
   let(:params) { { password: 'abc123', b: 2, c: '3' } }
+  let(:class_with_module) do
+    TestClass.new(params, request)
+  end
 
-  let(:request) {
+  let(:request) do
     request_double = double('request')
-    allow(request_double).to receive(:ip) { '0.1.2.3' }
-    allow(request_double).to receive(:original_url) { 'http://abc.def:1234/something' }
-    allow(request_double).to receive(:method) { 'POST' }
+    allow(request_double).to receive(:ip).and_return('0.1.2.3')
+    allow(request_double).to receive(:original_url).and_return('http://abc.def:1234/something')
+    allow(request_double).to receive(:method).and_return('POST')
 
     request_double
-  }
+  end
 
   before :all do
     configure_google_logger
-  end
-
-  let(:class_with_module) do
-    TestClass.new(params, request)
   end
 
   it 'returns params without secret params values' do
@@ -64,9 +63,9 @@ RSpec.describe GoogleLogger::ControllerLogging do
     it 'logs any uncaught exceptions' do
       exception = StandardError.new('testing exception catching')
 
-      expect {
+      expect do
         class_with_module.method_with_logging_that_raises_exception(exception)
-      }.to raise_error(exception)
+      end.to raise_error(exception)
     end
   end
 end

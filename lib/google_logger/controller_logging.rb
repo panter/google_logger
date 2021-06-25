@@ -26,7 +26,7 @@ module GoogleLogger
         params_to_log = params.to_unsafe_h
         GoogleLogger.deep_replace_secret_params(params_to_log)
         params_to_log
-      end      
+      end
     end
   end
 end

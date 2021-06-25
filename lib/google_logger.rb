@@ -11,6 +11,7 @@ require 'google_logger/params_replacer'
 
 module GoogleLogger
   class Error < StandardError; end
+
   class InvalidConfigurationError < Error; end
 
   class << self

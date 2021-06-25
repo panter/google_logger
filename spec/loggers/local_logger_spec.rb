@@ -6,7 +6,7 @@ RSpec.describe GoogleLogger::Loggers::LocalLogger do
   let(:severity) { :INFO }
   let(:entry) { described_class.new.build_entry(payload, log_name: log_name, severity: severity) }
 
-  before :each do
+  before do
     configure_google_logger_for_local_logging
   end
 

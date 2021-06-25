@@ -16,7 +16,7 @@ module ConfigurationHelper
         auth_uri: ENV['GOOGLE_LOGGER_TEST_AUTH_URI'],
         token_uri: ENV['GOOGLE_LOGGER_TEST_TOKEN_URI'],
         auth_provider_x509_cert_url: ENV['GOOGLE_LOGGER_TEST_AUTH_PROVIDER_CERT_URL'],
-        client_x509_cert_url: ENV['GOOGLE_LOGGER_TEST_CLIENT_CERT_URL'],
+        client_x509_cert_url: ENV['GOOGLE_LOGGER_TEST_CLIENT_CERT_URL']
       }
     end
   end
@@ -26,7 +26,7 @@ module ConfigurationHelper
 
     GoogleLogger.configure do |config|
       config.log_locally = true
-      config.local_logger = Logger.new(STDOUT)
+      config.local_logger = Logger.new($stdout)
     end
   end
 end

@@ -3,9 +3,10 @@
 module GoogleLogger
   class ParamsReplacer
     def deep_replace_secret_params(arg)
-      if arg.is_a?(Hash)
+      case arg
+      when Hash
         deep_replace_params_in_hash(arg)
-      elsif arg.is_a?(Array)
+      when Array
         deep_replace_params_in_array(arg)
       end
     end
@@ -25,9 +26,7 @@ module GoogleLogger
     end
 
     class << self
-      def deep_replace_secret_params(arg)
-        new.deep_replace_secret_params(arg)
-      end
+      delegate :deep_replace_secret_params, to: :new
     end
   end
 end
