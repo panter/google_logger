@@ -112,12 +112,12 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/google_logger.
+Bug reports and pull requests are welcome on GitHub at https://github.com/panter/google_logger.
 
 ## Sponsors
 
 Special thanks goes to [Panter](https://www.panter.ch/home) and [Yova](https://inyova.ch) for sponsoring development of this gem.
 
-![](https://github.com/panter/google_logger/logos/panter.svg)
-![](https://github.com/panter/google_logger/logos/yova.svg)
+![panter logo](https://github.com/panter/google_logger/logos/panter.svg)
+![yova logo](https://github.com/panter/google_logger/logos/yova.svg)
 
