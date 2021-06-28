@@ -1,0 +1,16 @@
+# single test suite, non-parallel build.
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=7bff3f4ebc37645c011a54718c1d91c1da800b42c9c71c3662a34208abf89c45
+language: ruby
+rvm:
+  - 2.5.0
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
