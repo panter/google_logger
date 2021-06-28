@@ -9,3 +9,4 @@ gem 'dotenv-rails'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', require: false
+gem 'simplecov', require: false, group: :test

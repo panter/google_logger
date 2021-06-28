@@ -1,15 +1,14 @@
+inherit_from: .rubocop_rspec.yml
+
 require:
-  - rubocop-rails
   - rubocop-rspec
   - rubocop-performance
 
 AllCops:
+  TargetRubyVersion: 2.5
   DisplayStyleGuide: true
   ExtraDetails: true
   NewCops: enable
-
-Rails:
-  Enabled: true
 
 Layout/LineLength:
   Max: 120
@@ -21,3 +20,21 @@ Layout/LineLength:
   # The IgnoreCopDirectives option causes the LineLength rule to ignore cop
   # directives like '# rubocop: enable ...' when calculating a line's length.
   IgnoreCopDirectives: true
+
+Metrics/BlockLength:
+  Exclude:
+    - "Rakefile"
+    - "**/*.rake"
+    - spec/**/*.rb
+
+Lint/MissingSuper:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  CountAsOne:
+    - hash
+    - array
+    - heredoc

@@ -49,9 +49,9 @@ module GoogleLogger
     end
 
     def validate_credentials
-      if @project_id.nil? || @project_id == '' || @credentials.nil? || @credentials == ''
-        raise_invalid!('"project_id" and "credentials" cannot be blank')
-      end
+      return unless @project_id.nil? || @project_id == '' || @credentials.nil? || @credentials == ''
+
+      raise_invalid!('"project_id" and "credentials" cannot be blank')
     end
 
     def raise_invalid!(message)

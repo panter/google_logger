@@ -1,0 +1,11 @@
+
+RSpec/MultipleExpectations:
+  Description: Checks if examples contain too many `expect` calls.
+  Enabled: true
+  Max: 5
+  VersionAdded: '1.7'
+  VersionChanged: '1.21'
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MultipleExpectations
+
+RSpec/ExampleLength:
+  Max: 8

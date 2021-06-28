@@ -105,7 +105,7 @@ RSpec.describe GoogleLogger do
     end
 
     it 'logs a request and params' do
-      request = double('request')
+      request = instance_double('ActionDispatch::Request')
       allow(request).to receive(:ip).and_return('0.1.2.3')
       allow(request).to receive(:original_url).and_return('http://abc.def:1234/something')
       allow(request).to receive(:method).and_return('POST')

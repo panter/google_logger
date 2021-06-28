@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe GoogleLogger::Loggers::CloudLogger do
-  before :all do
+  before do
     configure_google_logger
   end
 

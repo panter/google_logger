@@ -21,7 +21,7 @@ module GoogleLogger
       #
       # @return [Google::Cloud::Logging::Entry] entry with payload and default resource configuration
       def build_entry(payload, log_name: 'default_log', severity: :DEFAULT)
-        entry = @project.entry(payload: payload, log_name: log_name, severity: severity, timestamp: Time.zone.now)
+        entry = @project.entry(payload: payload, log_name: log_name, severity: severity, timestamp: Time.now)
         entry.resource.type = configuration.resource_type
         entry.resource.labels = configuration.resource_labels
         entry

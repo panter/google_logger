@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'Provides convenient methods to log all controller requests
                        and also provides a wrapper class which simplifies custom logging.'
   spec.homepage      = 'https://yova.ch/'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
   spec.license = 'MIT'
 
   spec.metadata['homepage_uri'] = spec.homepage

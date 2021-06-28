@@ -1,38 +1,39 @@
 # frozen_string_literal: true
 
-RSpec.describe GoogleLogger::ControllerLogging do
-  class TestClass
-    require 'action_controller'
+# This class mocks controller behaviour
+class TestClass
+  require 'action_controller'
 
-    include GoogleLogger::ControllerLogging
+  include GoogleLogger::ControllerLogging
 
-    attr_reader :params, :request
+  attr_reader :params, :request
 
-    def initialize(params, request = nil)
-      @params = ActionController::Parameters.new(params)
-      @request = request
-    end
+  def initialize(params, request = nil)
+    @params = ActionController::Parameters.new(params)
+    @request = request
+  end
 
-    def method_with_logging
-      log_request_to_google do
-        'doing controller method stuff'
-      end
-    end
-
-    def method_with_logging_that_raises_exception(exception)
-      log_request_to_google do
-        raise exception
-      end
+  def method_with_logging
+    log_request_to_google do
+      'doing controller method stuff'
     end
   end
 
+  def method_with_logging_that_raises_exception(exception)
+    log_request_to_google do
+      raise exception
+    end
+  end
+end
+
+RSpec.describe GoogleLogger::ControllerLogging do
   let(:params) { { password: 'abc123', b: 2, c: '3' } }
   let(:class_with_module) do
     TestClass.new(params, request)
   end
 
   let(:request) do
-    request_double = double('request')
+    request_double = instance_double('ActionDispatch::Request')
     allow(request_double).to receive(:ip).and_return('0.1.2.3')
     allow(request_double).to receive(:original_url).and_return('http://abc.def:1234/something')
     allow(request_double).to receive(:method).and_return('POST')
@@ -40,7 +41,7 @@ RSpec.describe GoogleLogger::ControllerLogging do
     request_double
   end
 
-  before :all do
+  before do
     configure_google_logger
   end
 
