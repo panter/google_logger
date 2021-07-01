@@ -16,7 +16,7 @@ module GoogleLogger
         yield
       rescue StandardError => e
         GoogleLogger.log_exception(e)
-        raise e
+        raise
       end
 
       # Returns params which should be logged, secret params have their value hidden before being logged

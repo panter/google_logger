@@ -13,7 +13,7 @@ module GoogleLogger
 
     def deep_replace_params_in_hash(hash)
       hash.each do |key, value|
-        if GoogleLogger.configuration.secret_params.include?(:"#{key}")
+        if GoogleLogger.configuration.secret_params.include?(key.to_sym)
           hash[key] = GoogleLogger.configuration.secret_param_value
         else
           deep_replace_secret_params(value)

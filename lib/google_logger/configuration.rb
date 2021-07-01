@@ -16,15 +16,12 @@ module GoogleLogger
 
     # Creates a new instance with default configuration values
     def initialize
-      @project_id = nil
-      @credentials = nil
       @async = true
       @resource_type = 'gae_app'
       @resource_labels = {}
       @secret_params = %i[password]
       @secret_param_value = '<SECRET_PARAM>'
       @log_locally = false
-      @local_logger = nil
     end
 
     def validate!
