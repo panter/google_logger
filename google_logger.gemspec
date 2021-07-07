@@ -12,12 +12,12 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Provides a simple interface to write logs to the google cloud platform.'
   spec.description   = 'Provides convenient methods to log all controller requests
                        and also provides a wrapper class which simplifies custom logging.'
-  spec.homepage      = 'https://yova.ch/'
+  spec.homepage      = 'https://github.com/panter/google_logger'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
   spec.license = 'MIT'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://yova.ch/'
+  spec.metadata['source_code_uri'] = spec.homepage
 
   # Specify which files should be added to the gem when it is released.
   spec.files         = FileList['lib/**/*.rb']
