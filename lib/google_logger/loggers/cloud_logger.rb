@@ -34,7 +34,7 @@ module GoogleLogger
       #
       # return [Boolean] `true` if the entry was successfully written
       def write_entry(entry)
-        log_writer = configuration.async ? @project : @project.async_writer
+        log_writer = configuration.async ? @project.async_writer : @project
         log_writer.write_entries(entry)
       end
     end
