@@ -1,4 +1,4 @@
-## [1.0.1] - 2021-08-10
+## [1.0.2] - 2021-08-10
 
 - Fixed async configuration bug
 
