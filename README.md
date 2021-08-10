@@ -33,6 +33,7 @@ GoogleLogger.configure do |config|
     config.resource_labels = {}
     config.secret_params = %i[password]
     config.secret_param_value = '<SECRET_PARAM>'
+    config.backtrace_length = 10
 end
 ```
 

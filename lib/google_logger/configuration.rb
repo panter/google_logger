@@ -12,6 +12,7 @@ module GoogleLogger
                     credentials
                     log_locally
                     local_logger
+                    backtrace_length
                   ])
 
     # Creates a new instance with default configuration values
@@ -22,6 +23,7 @@ module GoogleLogger
       @secret_params = %i[password]
       @secret_param_value = '<SECRET_PARAM>'
       @log_locally = false
+      @backtrace_length = 10
     end
 
     def validate!

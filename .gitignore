@@ -13,3 +13,4 @@ spec/.env
 .env
 *.gem
 coverage
+.byebug_history

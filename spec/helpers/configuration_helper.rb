@@ -18,6 +18,7 @@ module ConfigurationHelper
         auth_provider_x509_cert_url: ENV['GOOGLE_LOGGER_TEST_AUTH_PROVIDER_CERT_URL'],
         client_x509_cert_url: ENV['GOOGLE_LOGGER_TEST_CLIENT_CERT_URL']
       }
+      config.async = false
     end
   end
 

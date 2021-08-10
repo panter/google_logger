@@ -7,6 +7,7 @@ require 'bundler/setup'
 require 'google_logger'
 require 'dotenv/load'
 require 'helpers/configuration_helper'
+require 'byebug'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

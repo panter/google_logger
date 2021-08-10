@@ -60,7 +60,7 @@ module GoogleLogger
       payload = {
         message: exception.message,
         exception: exception.class.name,
-        bactrace: exception.backtrace&.first(5)
+        bactrace: exception.backtrace&.first(configuration.backtrace_length)
       }
 
       create_entry(payload, log_name: 'error', severity: :ERROR)
