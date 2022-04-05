@@ -26,7 +26,9 @@ module GoogleLogger
     end
 
     class << self
-      delegate :deep_replace_secret_params, to: :new
+      def deep_replace_secret_params
+        new.deep_replace_secret_params
+      end
     end
   end
 end
