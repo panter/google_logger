@@ -26,8 +26,8 @@ module GoogleLogger
     end
 
     class << self
-      def deep_replace_secret_params
-        new.deep_replace_secret_params
+      def deep_replace_secret_params(params)
+        new.deep_replace_secret_params(params)
       end
     end
   end
