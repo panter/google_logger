@@ -92,11 +92,7 @@ module GoogleLogger
     #
     # @return [Object] GoogleLogger::Logger by default, local logger if `loc_locally` is set to true
     def logger
-      if configuration.log_locally
-        Loggers::LocalLogger.new
-      else
-        Loggers::CloudLogger.new
-      end
+      configuration.log_locally ? local_logger : cloud_logger
     end
 
     # Log gem errors locally if local_logger is present
@@ -107,8 +103,19 @@ module GoogleLogger
       local_logger.error "GOOGLE_LOGGER ERROR: #{exception.inspect}" if local_logger.present?
     end
 
+    # mask secret param values
     def deep_replace_secret_params(params)
       ParamsReplacer.deep_replace_secret_params(params)
+    end
+
+    # get a cached instance of a local logger
+    def local_logger
+      @local_logger ||= Loggers::LocalLogger.new
+    end
+
+    # get a cached instance of a cloud logger
+    def cloud_logger
+      @cloud_logger ||= Loggers::CloudLogger.new
     end
   end
 end

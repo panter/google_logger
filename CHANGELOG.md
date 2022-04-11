@@ -1,3 +1,6 @@
+## [1.1.2] - 2022-04-05
+- Fixed memory leak
+
 ## [1.1.0] - 2021-08-10
 
 - Added option to specify exception backtrace length
