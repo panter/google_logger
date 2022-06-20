@@ -24,9 +24,10 @@ Gem::Specification.new do |spec|
 
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = %w[lib lib/google_logger lib/google_logger/loggers]
+  spec.require_paths = %w[lib lib/google_logger lib/google_logger/json_logger lib/google_logger/loggers]
 
   # google cloud api
   spec.add_dependency 'activesupport', '>= 5.2.4.5'
   spec.add_dependency 'stackdriver', '>= 0.21.1'
+  spec.add_dependency 'logger', '>= 1.5.1'
 end

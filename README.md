@@ -59,7 +59,29 @@ config.project_id = 'another_project_id'
 
 ### Creating logs
 
-The simpest way to create logs is using the `GoogleLogger::create_entry` method.
+`GoogleLogger::JsonLogger` complies with the common Ruby `Logger` interface and it supports tagged logging as well, therefore you can use it separately or as a substitute for the default rails logger:
+
+```ruby
+require 'google_logger'
+
+# Standalone usage (default_log_name is optional)
+logger = ActiveSupport::TaggedLogging.new(default_log_name: 'default')
+# json
+logger.info({ message: 'structured log', array: [1, 2, 3] })
+# text
+logger.info('plain text')
+
+# Tagged logging as a substitute for the default rails logger
+Rails.application.configure do
+    config.logger = ActiveSupport::TaggedLogging.new(GoogleLogger::JsonLogger.new)
+end
+
+Rails.logger.tagged('my tag') do
+    Rails.logger.debug('"my tag" will be used as the logName for this log')
+end
+```
+
+It is also possible to create logs is using the `GoogleLogger::create_entry` method, which can be used directly without initializing a new instance of the `GoogleLogger::JsonLogger` class.
 
 ```ruby
 # logging a string
@@ -71,7 +93,7 @@ hash_payload = { some_text: 'log message', any_aray: [1, 2, 3], another_hash: { 
 GoogleLogger.create_entry(hash_payload)
 ```
 
-It is also possible to manually create the log entries:
+And if you need even more control, you can manually build and save the log entries:
 
 ```ruby
 logger = GoogleLogger.logger
