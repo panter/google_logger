@@ -30,6 +30,10 @@ module GoogleLogger
       severity ||= UNKNOWN
       return true if severity < level
 
+      create_formatted_log(severity, message, progname)
+    end
+
+    def create_formatted_log(severity, message = nil, progname = nil)
       log_name = tagged? ? formatter.current_tags.join('.') : @default_log_name
       GoogleLogger.create_entry(
         message || progname,
