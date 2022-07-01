@@ -8,6 +8,7 @@ require 'google_logger/loggers/local_logger'
 require 'google_logger/loggers/base'
 require 'google_logger/controller_logging'
 require 'google_logger/params_replacer'
+require 'google_logger/json_logger'
 
 # Main module which should serve as an interface to all functionalities
 module GoogleLogger

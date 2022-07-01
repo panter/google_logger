@@ -5,18 +5,18 @@ module ConfigurationHelper
     GoogleLogger.configuration = nil
 
     GoogleLogger.configure do |config|
-      config.project_id = ENV['GOOGLE_LOGGER_TEST_PROJECT_ID']
+      config.project_id = ENV.fetch('GOOGLE_LOGGER_TEST_PROJECT_ID', nil)
       config.credentials = {
-        type: ENV['GOOGLE_LOGGER_TEST_TYPE'],
-        project_id: ENV['GOOGLE_LOGGER_TEST_PROJECT_ID'],
-        private_key_id: ENV['GOOGLE_LOGGER_TEST_PRIVATE_KEY_ID'],
-        private_key: ENV['GOOGLE_LOGGER_TEST_PRIVATE_KEY'],
-        client_email: ENV['GOOGLE_LOGGER_TEST_CLIENT_EMAIL'],
-        client_id: ENV['GOOGLE_LOGGER_TEST_CLIENT_ID'],
-        auth_uri: ENV['GOOGLE_LOGGER_TEST_AUTH_URI'],
-        token_uri: ENV['GOOGLE_LOGGER_TEST_TOKEN_URI'],
-        auth_provider_x509_cert_url: ENV['GOOGLE_LOGGER_TEST_AUTH_PROVIDER_CERT_URL'],
-        client_x509_cert_url: ENV['GOOGLE_LOGGER_TEST_CLIENT_CERT_URL']
+        type: ENV.fetch('GOOGLE_LOGGER_TEST_TYPE', nil),
+        project_id: ENV.fetch('GOOGLE_LOGGER_TEST_PROJECT_ID', nil),
+        private_key_id: ENV.fetch('GOOGLE_LOGGER_TEST_PRIVATE_KEY_ID', nil),
+        private_key: ENV.fetch('GOOGLE_LOGGER_TEST_PRIVATE_KEY', nil),
+        client_email: ENV.fetch('GOOGLE_LOGGER_TEST_CLIENT_EMAIL', nil),
+        client_id: ENV.fetch('GOOGLE_LOGGER_TEST_CLIENT_ID', nil),
+        auth_uri: ENV.fetch('GOOGLE_LOGGER_TEST_AUTH_URI', nil),
+        token_uri: ENV.fetch('GOOGLE_LOGGER_TEST_TOKEN_URI', nil),
+        auth_provider_x509_cert_url: ENV.fetch('GOOGLE_LOGGER_TEST_AUTH_PROVIDER_CERT_URL', nil),
+        client_x509_cert_url: ENV.fetch('GOOGLE_LOGGER_TEST_CLIENT_CERT_URL', nil)
       }
       config.async = false
     end

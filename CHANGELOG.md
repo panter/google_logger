@@ -1,3 +1,6 @@
+## [1.2.0] - 2022-06-20
+- Added standard logger interface
+
 ## [1.1.2] - 2022-04-05
 - Fixed memory leak
 

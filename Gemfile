@@ -7,6 +7,7 @@ gemspec
 
 gem 'byebug'
 gem 'dotenv-rails'
+gem 'logger'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', require: false
