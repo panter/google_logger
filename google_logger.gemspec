@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
 
   # google cloud api
   spec.add_dependency 'activesupport', '>= 5.2.4.5'
-  spec.add_dependency 'stackdriver', '>= 0.21.1'
   spec.add_dependency 'logger', '>= 1.5.1'
+  spec.add_dependency 'stackdriver', '>= 0.21.1'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

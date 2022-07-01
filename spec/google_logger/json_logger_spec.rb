@@ -6,6 +6,10 @@ RSpec.describe GoogleLogger::JsonLogger do
   let(:json_message) { { key: 'value' } }
   let(:tag_name) { 'my_tag' }
 
+  before do
+    allow(GoogleLogger).to receive(:create_entry)
+  end
+
   it 'logs a text message' do
     expect(GoogleLogger).to receive(:create_entry).with(message, log_name: 'default', severity: :INFO)
 
@@ -69,11 +73,7 @@ RSpec.describe GoogleLogger::JsonLogger do
         severity: :INFO
       )
 
-      logger.tagged(outer_tag) do
-        logger.tagged(tag_name) do
-          logger.info(message)
-        end
-      end
+      logger.tagged(outer_tag) { logger.tagged(tag_name) { logger.info(message) } }
     end
   end
 end

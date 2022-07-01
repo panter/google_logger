@@ -9,3 +9,6 @@ RSpec/MultipleExpectations:
 
 RSpec/ExampleLength:
   Max: 8
+
+RSpec/MessageSpies:
+  EnforcedStyle: 'receive'
